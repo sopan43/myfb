@@ -51,7 +51,7 @@ router.get('/:id', (req, res) => {
 });
 
 //Edit
-router.get('/:id/edit', checkOwnership, (req, res) => {
+router.get('/:id/edit', checkCampgroundOwnership, (req, res) => {
 
     Campground.findById(req.params.id, (err, foundCampground) => {
         res.render('campgrounds/edit', { campground: foundCampground });
@@ -59,7 +59,7 @@ router.get('/:id/edit', checkOwnership, (req, res) => {
 });
 
 //Update
-router.put('/:id', checkOwnership, (req, res) => {
+router.put('/:id', checkCampgroundOwnership, (req, res) => {
     Campground.findByIdAndUpdate(req.params.id, req.body.capmground, (err, data) => {
         if (err) {
             res.redirect('/campgrounds');
@@ -70,7 +70,7 @@ router.put('/:id', checkOwnership, (req, res) => {
 });
 
 //Destroy
-router.delete('/:id', checkOwnership,(req, res) => {
+router.delete('/:id', checkCampgroundOwnership,(req, res) => {
     Campground.findByIdAndRemove(req.params.id, (err, data) => {
         if (err) {
             console.log(err);
@@ -90,7 +90,7 @@ function isLoggedIn(req, res, next) {
     }
 };
 
-function checkOwnership(req, res, next) {
+function checkCampgroundOwnership(req, res, next) {
     if (req.isAuthenticated()) {
         Campground.findById(req.params.id, (err, foundCampground) => {
             if (err) {
