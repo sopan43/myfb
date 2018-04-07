@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
         if (error) {
             console.log(error);
         } else {
-            res.render('campgrounds/index', { campgrounds: data, currentUser: req.user });
+            res.render('campgrounds/index', { campgrounds: data});
         }
     });
 });
