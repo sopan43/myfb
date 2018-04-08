@@ -53,7 +53,7 @@ router.get('/:id', (req, res) => {
 //Edit
 router.get('/:id/edit', middleware.checkCampgroundOwnership, (req, res) => {
 
-    Campground.findById(req.params.id, (err, foundCampground) => {
+    Campground.findById(req.params.id, (error, foundCampground) => {
      if(error){
         req.flash('error', ('Something Wrong, Try Again Later '));
     }

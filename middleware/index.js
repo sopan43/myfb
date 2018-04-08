@@ -8,7 +8,7 @@ middlevareObj.checkCampgroundOwnership = function(req, res, next) {
         Campground.findById(req.params.id, (err, foundCampground) => {
             if (err) {
                 req.flash('error', ('Something Wrong, Try Again Later'));
-                res.render('back');
+                res.redirect('back');
             } else {
                 if (foundCampground.author.id.equals(req.user._id)) {
                     next()
@@ -30,7 +30,7 @@ middlevareObj.checkCommentOwnership = function(req, res, next) {
             if (err) {
                 console.log(err);
                 req.flash('error', ('Something Wrong, Try Again Later'));
-                res.render('back');
+                res.redirect('back');
             } else {
                 if (foundComment.author.id.equals(req.user._id)) {
                     next()
