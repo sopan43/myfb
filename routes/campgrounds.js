@@ -1,4 +1,4 @@
-var express = require('express');
+    var express = require('express');
 var router = express.Router();
 var Campground = require('../models/campground');
 var middleware = require('../middleware');
@@ -54,6 +54,9 @@ router.get('/:id', (req, res) => {
 router.get('/:id/edit', middleware.checkCampgroundOwnership, (req, res) => {
 
     Campground.findById(req.params.id, (err, foundCampground) => {
+     if(error){
+        req.flash('error', ('Something Wrong, Try Again Later '));
+    }
         res.render('campgrounds/edit', { campground: foundCampground });
     });
 });
@@ -76,6 +79,7 @@ router.delete('/:id', middleware.checkCampgroundOwnership,(req, res) => {
             console.log(err);
             res.redirect('/campgrounds');
         } else {
+            req.flash('success', ('Comment Delete'));
             res.redirect('/campgrounds');
         }
     });
