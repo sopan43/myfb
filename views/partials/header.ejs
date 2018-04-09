@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>YelpCamp</title>
+        <link rel="icon" href="http://i.imgur.com/K3mPv14.jpg" type="image/gif" sizes="16x16">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="/stylesheets/main.css">
     </head>
@@ -11,7 +12,14 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="/">YelpCamp</a>
             </div>
+
+                   
+
+
             <div class="collapse navbar-collapse">
+                 <ul class="nav navbar-nav">
+                        <li><a href="/campgrounds">Campgrounds <span class="sr-only">(current)</span></a></li>
+                     </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <% if(!currentUser){ %>
                         <li><a href="/login">Login</a></li>
