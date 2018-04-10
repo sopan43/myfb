@@ -58,6 +58,6 @@ app.use('/campgrounds/:id/comments',commentRoutes);
 
 
 
-app.listen(process.env.port, () => {
-    console.log('3000');
+app.listen(process.env.PORT, () => {
+    console.log('Server Up at PORT ' +process.env.PORT);
 });
