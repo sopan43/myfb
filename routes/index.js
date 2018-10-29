@@ -18,7 +18,7 @@ router.get('/register', (req, res) => {
 
 //POST Register
 router.post('/register', (req, res) => {
-    var newUser = new User({ username: req.body.username });
+    var newUser = new User({ username: req.body.username, firstname: req.body.fristname, lastname: req.body.lastname, dob: req.body.dob });
     User.register(newUser, req.body.password, (err, user) => {
         if (err) {
             console.log(err);
@@ -26,7 +26,7 @@ router.post('/register', (req, res) => {
             return res.redirect('/register');
         } else {
             passport.authenticate('local')(req, res, () => {
-                req.flash('success', ('Welcome to Yelpcamp ' + user.username));
+                req.flash('success', ('Welcome to MyFacebook ' + user.username));
                 return res.redirect('/campgrounds');
             });
         }

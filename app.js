@@ -15,7 +15,7 @@ var commentRoutes = require('./routes/comments');
 var campgroundRoutes = require('./routes/campgrounds');
 var indexRoutes = require('./routes/index');
 
-mongoose.connect('mongodb://admin:admin123@ds111648.mlab.com:11648/yelp_camp');
+mongoose.connect('mongodb://admin:admin123@ds139251.mlab.com:39251/myfb');
 
 var app = express();
 
@@ -25,7 +25,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(methodOverride('_method'));
 app.use(flash());
 
-
+const PORT = process.env.PORT || 3000;
 
 //Passport Config
 app.use(require('express-session')({
@@ -56,8 +56,6 @@ app.use('/', indexRoutes);
 app.use('/campgrounds', campgroundRoutes);
 app.use('/campgrounds/:id/comments',commentRoutes);
 
-
-
-app.listen(process.env.PORT, () => {
-    console.log('Server Up at PORT ' +process.env.PORT);
+app.listen(PORT, () => {
+    console.log('Server Up at PORT ' + PORT);
 });
